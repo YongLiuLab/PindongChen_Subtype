@@ -1,0 +1,18 @@
+library(neuroCombat)
+data<- read.csv("E:/brain/subtype/src/ADATA/All_GMV.csv",header = TRUE)
+dataCT<- read.csv("E:/brain/subtype/src/ADATA/All_CT.csv",header = TRUE)
+info <- read.csv("E:/brain/subtype/src/ADATA/All_Info.csv",header=TRUE)
+data <- as.matrix(data)
+dataCT <- as.matrix(dataCT)
+tiv <- as.numeric(info$TIV)
+age <- as.numeric(info$AGE)
+group <- as.factor(info$GROUP)
+gender <- as.factor(info$GENDER)
+batch <- as.numeric(info$batch)
+mod  <- model.matrix(~age+gender+group+tiv)
+
+#combat.harmonized <- neuroCombat(dat=data, batch=batch, mod=mod,mean.only = TRUE,eb=F)
+#write.table(combat.harmonized[1], "E:/brain/subtype/src/ADATA/GMV_Combat",row.names = FALSE,col.names = FALSE)
+
+combat.harmonized <- neuroCombat(dat=dataCT, batch=batch, mod=mod,mean.only = TRUE,eb=F)
+write.table(combat.harmonized[1], "E:/brain/subtype/src/ADATA/CT_Combat.txt",row.names = FALSE,col.names = FALSE)
