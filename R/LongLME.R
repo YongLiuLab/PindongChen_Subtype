@@ -11,7 +11,7 @@ info <- read.csv('./table/AD_Cog_Long.csv')
 
 info$cluster = info$cluster +1
 info$cluster <- relevel(as.factor(info$cluster), "1")
-columns = c('MMSE','ADAS11','ADNI_EF','ADNI_LAN','ADNI_VS','ADNI_MEM','ADAS13')
+columns = c('MMSE','ADNI_EF','ADNI_LAN','ADNI_VS','ADNI_MEM')
 #info = subset(info,VIS_M < 61)
 colors = c("#374E55FF","#DF8F44FF","#00A1D5FF","#B24745FF")
 columns = c('MMSE')
